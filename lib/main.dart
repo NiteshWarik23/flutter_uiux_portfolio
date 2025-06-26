@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/landing_page.dart';
 import 'package:my_portfolio/core/dependency_injection/dependency_injection.dart'
     as di;
-import 'package:my_portfolio/modules/snake_game/snake_main.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

@@ -9,6 +9,7 @@ import 'package:my_portfolio/modules/about_me/presentation/bloc/tabbar_bloc/tab_
 import 'package:my_portfolio/modules/about_me/presentation/bloc/tabbar_bloc/tab_event.dart';
 import 'package:my_portfolio/modules/about_me/presentation/bloc/tabbar_bloc/tab_state.dart';
 import 'package:my_portfolio/modules/about_me/presentation/view/about_me.dart';
+import 'package:my_portfolio/modules/projects/presentation/view/projects.dart';
 import 'package:url_launcher/url_launcher.dart';
 //import 'dart:html' as html; // For web redirection
 
@@ -20,7 +21,8 @@ class LandingPage extends StatelessWidget {
   final List<Widget> _screens = [
     LandingPageView(),
     AboutMe(),
-    //SideBar(),
+    SideBar(),
+    Center(child: Text("This is Contact Page", style: TextStyle(fontSize: 20))),
     Center(child: Text("This is Contact Page", style: TextStyle(fontSize: 20))),
   ];
 

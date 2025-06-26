@@ -81,7 +81,6 @@ class SidebarSection extends StatefulWidget {
 
 class _SidebarSectionState extends State<SidebarSection> {
   bool isExpanded = false;
-  //List<String> items = ['Bio', 'Interest', 'Edcation', 'Contacts'];
 
   @override
   Widget build(BuildContext context) {
@@ -104,8 +103,6 @@ class _SidebarSectionState extends State<SidebarSection> {
             height: 14,
             width: 14,
             fit: BoxFit.contain,
-            // colorFilter: const ColorFilter.mode(
-            //     Color(0xff607B96), BlendMode.srcIn),
           ),
           Text(
             widget.title,
@@ -116,23 +113,18 @@ class _SidebarSectionState extends State<SidebarSection> {
       iconColor: Colors.white,
       collapsedIconColor: Colors.white,
       children: widget.items
-          .map((item) => ListTile(
-                title: Text(
-                  item,
-                  style: GoogleFonts.firaCode(
-                      color: Color(0xff607B96), fontSize: 14),
-                ),
-                contentPadding: const EdgeInsets.only(left: 32),
-                leading: const Icon(Icons.folder, color: Colors.grey, size: 18),
-                onTap: () => widget.onItemSelected(item),
-                // {
-                //   setState(() {
-                //     _selectedItem = item;
-                //   });
-                //   ScaffoldMessenger.of(context)
-                //       .showSnackBar(SnackBar(content: Text("Opening $item")));
-                // },
-              ))
+          .map(
+            (item) => ListTile(
+              title: Text(
+                item,
+                style: GoogleFonts.firaCode(
+                    color: Color(0xff607B96), fontSize: 14),
+              ),
+              contentPadding: const EdgeInsets.only(left: 32),
+              leading: const Icon(Icons.folder, color: Colors.grey, size: 18),
+              onTap: () => widget.onItemSelected(item),
+            ),
+          )
           .toList(),
     );
   }
