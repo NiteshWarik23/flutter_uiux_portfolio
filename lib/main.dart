@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/landing_page.dart';
 import 'package:my_portfolio/core/dependency_injection/dependency_injection.dart'
     as di;
+import 'package:my_portfolio/modules/snake_game/snake_main.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Nitesh Kishor Warik',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           // This is the theme of your application.
@@ -37,8 +38,10 @@ class MyApp extends StatelessWidget {
           // tested with just a hot reload.
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
+          scaffoldBackgroundColor: const Color(0xFF0F766E), // Teal background
         ),
         home: LandingPage()
+        //SnakeGameScreen() 
         //TabBarOnFlutterWeb(),
         //const MyHomePage(title: 'Flutter Demo Home Page'),
         );

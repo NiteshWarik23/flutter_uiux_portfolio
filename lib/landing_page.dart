@@ -20,7 +20,7 @@ class LandingPage extends StatelessWidget {
   final List<Widget> _screens = [
     LandingPageView(),
     AboutMe(),
-    SideBar(),
+    //SideBar(),
     Center(child: Text("This is Contact Page", style: TextStyle(fontSize: 20))),
   ];
 
@@ -234,7 +234,7 @@ class LandingPage extends StatelessWidget {
         isTabSelected
             ? Container(
                 width: widthOfSizedBox,
-                height: AppBar().preferredSize.height * 0.06,
+                height: AppBar().preferredSize.height * 0.03,
                 color: Color(0xffFEA55F),
               )
             : SizedBox(),
