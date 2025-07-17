@@ -25,17 +25,17 @@ class PersonalInfoAndContactWidget extends StatelessWidget {
             children: [
               SidebarSection(
                   title: "bio",
-                  items: ["info.dart", "home.dart", "sidebar.dart"],
+                  items: ["info.dart",],
                   iconPath: 'assets/icons/orangeFolder.svg',
                   onItemSelected: onItemSelected),
               SidebarSection(
                   title: "interests",
-                  items: ["button.dart", "card.dart", "input_field.dart"],
+                  items: ["uiux.dart", "ai.dart", "dsa.dart"],
                   iconPath: 'assets/icons/greenFolder.svg',
                   onItemSelected: onItemSelected),
               SidebarSection(
                   title: "education",
-                  items: ["high-school", "university"],
+                  items: ["university.dart"],
                   iconPath: 'assets/icons/purpleFolder.svg',
                   onItemSelected: onItemSelected),
               // Contacts Info
@@ -48,11 +48,6 @@ class PersonalInfoAndContactWidget extends StatelessWidget {
                   items: [],
                   iconPath: 'assets/icons/greenFolder.svg',
                   onItemSelected: onItemSelected),
-              // SidebarSection(
-              //   title: "+91 9004517482",
-              //   items: ["high-school", "university"],
-              //   iconPath: 'assets/icons/purpleFolder.svg',
-              // ),
             ],
           ),
         ),
@@ -121,7 +116,14 @@ class _SidebarSectionState extends State<SidebarSection> {
                     color: Color(0xff607B96), fontSize: 14),
               ),
               contentPadding: const EdgeInsets.only(left: 32),
-              leading: const Icon(Icons.folder, color: Colors.grey, size: 18),
+              leading: 
+              // SvgPicture.asset(
+              //   'assets/icons/Dart.svg',
+              //   height: 14,
+              //   width: 14,
+              //   fit: BoxFit.contain,
+              // ),
+              const Icon(Icons.folder, color: Colors.grey, size: 18),
               onTap: () => widget.onItemSelected(item),
             ),
           )

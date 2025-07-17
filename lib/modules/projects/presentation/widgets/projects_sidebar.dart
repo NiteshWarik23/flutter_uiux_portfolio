@@ -6,7 +6,7 @@ class ProjectsSidebarSection extends StatefulWidget {
   final String title;
   final List<String> items;
   final String iconPath;
-  final Function(String) onItemSelected;
+  final Function(List<String>) onItemSelected;
 
   const ProjectsSidebarSection({
     super.key,
@@ -39,20 +39,24 @@ class _ProjectsSidebarSectionState extends State<ProjectsSidebarSection> {
       //   color: const Color(0xff607B96),
       // ),
       showTrailingIcon: false,
-      title: Row(
-        children: [
-          SvgPicture.asset(
-            widget.iconPath,
-            height: 8,
-            width: 8,
-            fit: BoxFit.contain,
-          ),
-          const SizedBox(width: 8),
-          Text(
-            widget.title,
-            style: GoogleFonts.firaCode(color: Colors.white, fontSize: 14),
-          ),
-        ],
+      initiallyExpanded: true,
+      title: Padding(
+        padding: const EdgeInsets.only(bottom: 8.0),
+        child: Row(
+          children: [
+            SvgPicture.asset(
+              widget.iconPath,
+              height: 8,
+              width: 8,
+              fit: BoxFit.contain,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              widget.title,
+              style: GoogleFonts.firaCode(color: Colors.white, fontSize: 14),
+            ),
+          ],
+        ),
       ),
       iconColor: Colors.white,
       collapsedIconColor: Colors.white,
@@ -60,11 +64,12 @@ class _ProjectsSidebarSectionState extends State<ProjectsSidebarSection> {
       // ✅ List of CheckboxListTile items
       children: widget.items.map((item) {
         return CheckboxListTile.adaptive(
+          controlAffinity: ListTileControlAffinity.leading, // ✅ Key line!
           title: Row(
             spacing: 4,
             children: [
-               SvgPicture.asset(
-              'assets/icons/Flutter.svg',
+              SvgPicture.asset(
+                'assets/icons/Flutter.svg',
                 height: 22,
                 width: 22,
                 fit: BoxFit.contain,
@@ -84,10 +89,12 @@ class _ProjectsSidebarSectionState extends State<ProjectsSidebarSection> {
             setState(() {
               if (selected == true) {
                 selectedItems.add(item);
+                print('Selected items: $selectedItems');
               } else {
                 selectedItems.remove(item);
+                print('After Removal of items: $selectedItems');
               }
-              widget.onItemSelected(item); // Optional callback
+              widget.onItemSelected(selectedItems); // Optional callback
             });
           },
         );

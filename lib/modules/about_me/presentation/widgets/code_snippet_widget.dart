@@ -10,10 +10,10 @@ class CodeSnippetCard extends StatelessWidget {
       padding: EdgeInsets.only(
         top: MediaQuery.sizeOf(context).height * 0.03,
       ),
-      child: Card(
+      child: Container(
         color: Color(0xff031420),
         margin: const EdgeInsets.all(16),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -212,7 +212,7 @@ class DartHighlightSnippet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xff031420),  // Dark background like a code editor
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(8),
       child: SingleChildScrollView(
 
         scrollDirection: Axis.vertical,
@@ -280,21 +280,21 @@ class DartHighlightSnippet extends StatelessWidget {
 
   // Highlight helpers
   static TextSpan _keyword(String text) =>
-      TextSpan(text: text, style: const TextStyle(color: Colors.cyanAccent));
+      TextSpan(text: text, style: const TextStyle(color: Color(0xff4D5BCE),fontSize: 14));
   static TextSpan _type(String text) =>
-      TextSpan(text: text, style: const TextStyle(color: Colors.orangeAccent));
+      TextSpan(text: text, style: const TextStyle(color: Colors.orangeAccent,fontSize: 14));
   static TextSpan _className(String text) =>
-      TextSpan(text: text, style: const TextStyle(color: Colors.purpleAccent));
+      TextSpan(text: text, style: const TextStyle(color: Color(0xff43D9AD), fontSize: 14));
   static TextSpan _variable(String text) =>
-      TextSpan(text: text, style: const TextStyle(color: Colors.amberAccent));
+      TextSpan(text: text, style: const TextStyle(color: Color(0xffE99287), fontSize: 14));
   static TextSpan _function(String text) =>
-      TextSpan(text: text, style: const TextStyle(color: Colors.lightBlueAccent));
+      TextSpan(text: text, style: const TextStyle(color: Colors.lightBlueAccent, fontSize: 14));
   static TextSpan _string(String text) =>
-      TextSpan(text: text, style: const TextStyle(color: Colors.greenAccent));
+      TextSpan(text: text, style: const TextStyle(color: Colors.greenAccent, fontSize: 14));
   static TextSpan _comment(String text) =>
-      TextSpan(text: text, style: const TextStyle(color: Colors.grey, fontStyle: FontStyle.italic));
+      TextSpan(text: text, style: const TextStyle(color: Colors.grey, fontStyle: FontStyle.italic, fontSize: 14));
   static TextSpan _symbol(String text) =>
-      TextSpan(text: text, style: const TextStyle(color: Colors.white));
+      TextSpan(text: text, style: const TextStyle(color: Colors.white, fontSize: 14));
   static TextSpan _space() => const TextSpan(text: ' ');
   static TextSpan _newline() => const TextSpan(text: '\n');
   static TextSpan _indent(int level) => TextSpan(text: '  ' * level);
