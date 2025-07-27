@@ -10,6 +10,7 @@ import 'package:my_portfolio/modules/about_me/presentation/bloc/tabbar_bloc/tab_
 import 'package:my_portfolio/modules/about_me/presentation/bloc/tabbar_bloc/tab_state.dart';
 import 'package:my_portfolio/modules/about_me/presentation/view/about_me.dart';
 import 'package:my_portfolio/modules/contact_me/view/widgets/contact_me_form.dart';
+import 'package:my_portfolio/modules/contact_me/view/widgets/contact_me_google_form.dart';
 import 'package:my_portfolio/modules/projects/presentation/view/projects.dart';
 import 'package:url_launcher/url_launcher.dart';
 //import 'dart:html' as html; // For web redirection
@@ -23,7 +24,8 @@ class LandingPage extends StatelessWidget {
     LandingPageView(),
     AboutMe(),
     SideBar(),
-    ContactMeForm(),
+    GoogleFormEmbed(),
+    //ContactMeForm(),
     Center(child: Text("This is Contact Page", style: TextStyle(fontSize: 20))),
   ];
 
@@ -351,7 +353,7 @@ class _LandingPageViewState extends State<LandingPageView>
                         spacing: 4.0,
                         children: [
                           Text(
-                            "Hi all, I'm",
+                            "Hi, I'm",
                             style: GoogleFonts.firaCode(
                                 color: Color(0xffE5E9F0), fontSize: 16),
                           ),
@@ -361,7 +363,7 @@ class _LandingPageViewState extends State<LandingPageView>
                                 color: Color(0xffE5E9F0), fontSize: 45),
                           ),
                           Text(
-                            "> Flutter Developer & UX/UI Designer",
+                            "> Experienced Flutter Developer, UI/UX & AI enthusiast.",
                             style: GoogleFonts.firaCode(
                                 color: Color(0xff4D5BCE), fontSize: 28),
                           ),
@@ -384,7 +386,7 @@ class _LandingPageViewState extends State<LandingPageView>
                                 maxRadius: 5,
                               ),
                               label: Text(
-                                'Available For Freelance & Full-Time',
+                                'Available For Freelance / Full-Time',
                                 style: GoogleFonts.firaCode(
                                   fontSize: 14,
                                   color: Color(0xffE99287),

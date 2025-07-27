@@ -80,6 +80,7 @@ class _SidebarSectionState extends State<SidebarSection> {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
+      initiallyExpanded: false,
       onExpansionChanged: (bool expanded) {
         setState(() {
           isExpanded = expanded;

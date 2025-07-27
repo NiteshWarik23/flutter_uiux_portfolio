@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/modules/about_me/presentation/widgets/code_snippet_widget.dart';
 import 'package:my_portfolio/modules/contact_me/view/widgets/conatct_me_code_snippet.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactMeForm extends StatefulWidget {
   const ContactMeForm({super.key});
@@ -156,7 +157,9 @@ class _ContactMeFormState extends State<ContactMeForm> {
                         borderRadius: BorderRadius.circular(6),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      openGoogleForm();
+                    },
                     child: Text(
                       'submit-message',
                       style: GoogleFonts.firaCode(
@@ -174,6 +177,19 @@ class _ContactMeFormState extends State<ContactMeForm> {
             ),
       ],
     );
+  }
+
+  void openGoogleForm() async {
+    final String url = "https://forms.gle/nrDxZtp8iTk1vnfp8";
+    // if (kIsWeb) {
+    //   html.window.open(url, "_blank"); // Opens in a new tab for Flutter Web
+    // } else {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+    } else {
+      throw "Could not launch $url";
+    }
+    // }
   }
 }
 
