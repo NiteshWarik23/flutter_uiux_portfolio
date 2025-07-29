@@ -27,7 +27,7 @@ jobs:
 
       # Step 4: Build the Flutter web project (output goes into build/web)
       - name: Build Web
-        run: flutter build web
+        run: flutter build web --base-href="/flutter_uiux_portfolio/"
 
       # Step 5: Deploy the contents of build/web to GitHub Pages
       - name: Deploy to GitHub Pages
