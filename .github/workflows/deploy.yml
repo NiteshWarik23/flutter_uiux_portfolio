@@ -35,3 +35,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # Auto-generated GitHub token
           publish_dir: build/web # Directory to publish to GitHub Pages
+          publish_branch: gh-pages
