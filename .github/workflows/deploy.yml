@@ -4,6 +4,7 @@ name: Deploy Flutter Web to GitHub Pages
 on:
   push:
     branches: [main] # Change to 'master' if your default branch is 'master'
+  workflow_dispatch:     # allow manual trigger from GitHub UI
 
 jobs:
   build:
