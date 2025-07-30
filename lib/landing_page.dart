@@ -28,13 +28,13 @@ class _LandingPageState extends State<LandingPage> {
   bool isSelected = false;
 
   final List<Widget> _screens = [
-    LandingPageView(key: PageStorageKey('hello'),),
-    AboutMe(key: PageStorageKey('about')),
-    SideBar(key: PageStorageKey('projects')),
-    GoogleFormEmbed(key: PageStorageKey('form')),
+    LandingPageView(key: ValueKey('hello'),),
+    AboutMe(key: ValueKey('about')),
+    SideBar(key: ValueKey('projects')),
+    GoogleFormEmbed(key: ValueKey('form')),
     //ContactMeForm(),
     Center(
-        key: PageStorageKey('contact'),
+        key: ValueKey('contact'),
       child: Text("This is Contact Page", style: TextStyle(fontSize: 20))),
   ];
 
