@@ -9,46 +9,62 @@ import 'package:my_portfolio/modules/about_me/presentation/bloc/tabbar_bloc/tab_
 import 'package:my_portfolio/modules/about_me/presentation/bloc/tabbar_bloc/tab_event.dart';
 import 'package:my_portfolio/modules/about_me/presentation/bloc/tabbar_bloc/tab_state.dart';
 import 'package:my_portfolio/modules/about_me/presentation/view/about_me.dart';
-import 'package:my_portfolio/modules/contact_me/view/widgets/contact_me_form.dart';
 import 'package:my_portfolio/modules/contact_me/view/widgets/contact_me_google_form.dart';
 import 'package:my_portfolio/modules/projects/presentation/view/projects.dart';
 import 'package:url_launcher/url_launcher.dart';
-//import 'dart:html' as html; // For web redirection
+//import 'dart:html' as html; this is the code
+//// For web redirection I'm using flutter_bloc for state management and how to implement pagestorage key
 
-class LandingPage extends StatelessWidget {
-  LandingPage({super.key});
+class LandingPage extends StatefulWidget {
+  const LandingPage({super.key});
 
-  final TabBarBloc tabBarBloc = locator<TabBarBloc>();
+  @override
+  State<LandingPage> createState() => _LandingPageState();
+}
+
+class _LandingPageState extends State<LandingPage> {
+  //final TabBarBloc tabBarBloc = locator<TabBarBloc>();
+
   bool isSelected = false;
+
   final List<Widget> _screens = [
-    LandingPageView(),
-    AboutMe(),
-    SideBar(),
-    GoogleFormEmbed(),
+    LandingPageView(key: PageStorageKey('hello'),),
+    AboutMe(key: PageStorageKey('about')),
+    SideBar(key: PageStorageKey('projects')),
+    GoogleFormEmbed(key: PageStorageKey('form')),
     //ContactMeForm(),
-    Center(child: Text("This is Contact Page", style: TextStyle(fontSize: 20))),
+    Center(
+        key: PageStorageKey('contact'),
+      child: Text("This is Contact Page", style: TextStyle(fontSize: 20))),
   ];
+
+  final _bucket = PageStorageBucket();
+  // This is used to store the state of the page when navigating between tabs 
+  // how to call event if i use blocprovider.value
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => tabBarBloc,
-      child: Scaffold(
-        backgroundColor: Color(0xff031420),
-        appBar: AppBar(
+    return PageStorage(
+      bucket: _bucket,
+      child: BlocProvider.value(
+        value: locator<TabBarBloc>(),
+        child: Scaffold(
           backgroundColor: Color(0xff031420),
-          toolbarHeight: 45.0,
-          flexibleSpace: appBarWidget(context),
+          appBar: AppBar(
+            backgroundColor: Color(0xff031420),
+            toolbarHeight: 45.0,
+            flexibleSpace: appBarWidget(context),
+          ),
+          body: BlocBuilder<TabBarBloc, TabBarState>(
+            builder: (context, state) {
+              if (state is TabChangedState) {
+                return _screens[state.selectedIndex];
+              }
+              return _screens[0];
+            },
+          ),
+          bottomNavigationBar: customBottomNavBarWidget(context),
         ),
-        body: BlocBuilder<TabBarBloc, TabBarState>(
-          builder: (context, state) {
-            if (state is TabChangedState) {
-              return _screens[state.selectedIndex];
-            }
-            return _screens[0];
-          },
-        ),
-        bottomNavigationBar: customBottomNavBarWidget(context),
       ),
     );
   }
@@ -246,7 +262,9 @@ class LandingPage extends StatelessWidget {
               SystemMouseCursors.click, // 👈 This changes the cursor to a hand
           child: GestureDetector(
             onTap: () {
-              tabBarBloc.add(TabChangedEvent(currentIndex));
+               BlocProvider.of<TabBarBloc>(context)
+                  .add(TabChangedEvent(currentIndex));
+              //print("Tab $currentIndex selected");
             },
             child: SizedBox(
               width: widthOfSizedBox,
@@ -463,7 +481,7 @@ class _LandingPageViewState extends State<LandingPageView>
                 ),
               ],
             ),
-             Positioned(
+            Positioned(
                 top: constraints.maxHeight * 0.15, // Move slightly lower
                 right: constraints.maxWidth * 0.1,
                 child: RippleEffect()),
@@ -527,7 +545,6 @@ class _LandingPageViewState extends State<LandingPageView>
                 ),
               ),
             ),
-           
           ],
         );
       },
