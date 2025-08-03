@@ -229,8 +229,8 @@ class MobileView extends StatelessWidget {
                     'assets/icons/github.svg'),
                 verticalDividerWidget(context),
                 socialAccountRedirectionWidget(
-                    context, "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=new", 'assets/icons/email.svg',
-                    isEmail: false),
+                    context, "", 'assets/icons/email.svg',
+                    isEmail: true),
                 verticalDividerWidget(context),
               ],
             ),
@@ -291,13 +291,13 @@ class MobileView extends StatelessWidget {
 
   void openEmailClient() async {
     if (kIsWeb) {
-      html.window
-          .open('mailto:someone@example.com?subject=Feedback&body=Hi', '_blank');
+      openUrl(
+          "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=new");
     } else {
       final Uri emailLaunchUri = Uri(
         scheme: 'mailto',
         path: 'niteshwarik23@gmail.com',
-        //query: 'subject=Support Needed&body=Hi, I need help with...', 
+        //query: 'subject=Support Needed&body=Hi, I need help with...',
       );
 
       if (await canLaunchUrl(emailLaunchUri)) {
