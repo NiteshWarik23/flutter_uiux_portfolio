@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/landing_page.dart';
+import 'package:my_portfolio/widgets/download_resume_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:html' as html;
 
@@ -175,6 +176,10 @@ class MobileView extends StatelessWidget {
                   ],
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(top:15.0),
+                child: ResumeButton(),
+              ),
               //RippleEffect(),
               SizedBox(
                 height: 500,
@@ -182,7 +187,7 @@ class MobileView extends StatelessWidget {
               ),
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.1,
-              )
+              ),
             ],
           ),
         ),
@@ -297,13 +302,13 @@ class MobileView extends StatelessWidget {
       final Uri emailLaunchUri = Uri(
         scheme: 'mailto',
         path: 'niteshwarik23@gmail.com',
-        //query: 'subject=Support Needed&body=Hi, I need help with...',
+        //query: 'subject=Support Needed&body=Hi, I need help with...', how
       );
 
       if (await canLaunchUrl(emailLaunchUri)) {
         await launchUrl(emailLaunchUri, mode: LaunchMode.externalApplication);
       } else {
-        // Show a message another way to open the email client
+        // S  a message another way to open the email client
         print("Could not launch email client.");
       }
     }
@@ -326,7 +331,7 @@ class MobileView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0),
                   child: SizedBox(
-                    width: 300, //MediaQuery.sizeOf(context).width * 0.18,
+                    width: 300, //MediaQuery.sizeOf(context).width * 0.18, how to create a download resume button with functionality in flutter web or redirect it to drive link
                     child: Text(
                       "nitesh_kishor_warik",
                       style: GoogleFonts.firaCode(
