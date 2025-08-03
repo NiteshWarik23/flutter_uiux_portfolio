@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
 class PersonalInfoAndContactWidget extends StatelessWidget {
   final Function(String) onItemSelected;
   const PersonalInfoAndContactWidget({
@@ -100,9 +101,12 @@ class _SidebarSectionState extends State<SidebarSection> {
             width: 14,
             fit: BoxFit.contain,
           ),
-          Text(
-            widget.title,
-            style: GoogleFonts.firaCode(color: Colors.white, fontSize: 14),
+          Expanded(
+            child: Text(
+              widget.title,
+              overflow: TextOverflow.ellipsis,
+              style: GoogleFonts.firaCode(color: Colors.white, fontSize: 14),
+            ),
           ),
         ],
       ),
