@@ -84801,7 +84801,7 @@ L(a){var s=null,r=4293497479,q=A.aAK(s,s,A.a0(4278391840),s,s,s,s,s,s,s,s,s,s,s,
 return A.aLV(A.n8(B.IQ,A.a0(r),s,s),A.bC("Download Resume",s,s,A.bP().$2$color$fontSize(A.a0(r),16),s),new A.afL(),q)}}
 A.afL.prototype={
 $0(){var s=document.createElement("a")
-s.href="assets/Nitesh_Warik_Flutter.pdf"
+s.href="assets/assets/Nitesh_Warik_Flutter.pdf"
 s.setAttribute("download","Nitesh_Warik_Flutter.pdf")
 s.click()},
 $S:0}
