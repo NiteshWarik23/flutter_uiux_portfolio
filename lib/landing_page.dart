@@ -11,6 +11,7 @@ import 'package:my_portfolio/modules/about_me/presentation/bloc/tabbar_bloc/tab_
 import 'package:my_portfolio/modules/about_me/presentation/view/about_me.dart';
 import 'package:my_portfolio/modules/contact_me/view/widgets/contact_me_google_form.dart';
 import 'package:my_portfolio/modules/projects/presentation/view/projects.dart';
+import 'package:my_portfolio/widgets/download_resume_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 //import 'dart:html' as html; this is the code
 //// For web redirection I'm using flutter_bloc for state management and how to implement pagestorage key
@@ -28,18 +29,20 @@ class _LandingPageState extends State<LandingPage> {
   bool isSelected = false;
 
   final List<Widget> _screens = [
-    LandingPageView(key: ValueKey('hello'),),
+    LandingPageView(
+      key: ValueKey('hello'),
+    ),
     AboutMe(key: ValueKey('about')),
     SideBar(key: ValueKey('projects')),
     GoogleFormEmbed(key: ValueKey('form')),
     //ContactMeForm(),
     Center(
         key: ValueKey('contact'),
-      child: Text("This is Contact Page", style: TextStyle(fontSize: 20))),
+        child: Text("This is Contact Page", style: TextStyle(fontSize: 20))),
   ];
 
   final _bucket = PageStorageBucket();
-  // This is used to store the state of the page when navigating between tabs 
+  // This is used to store the state of the page when navigating between tabs
   // how to call event if i use blocprovider.value
 
   @override
@@ -262,7 +265,7 @@ class _LandingPageState extends State<LandingPage> {
               SystemMouseCursors.click, // 👈 This changes the cursor to a hand
           child: GestureDetector(
             onTap: () {
-               BlocProvider.of<TabBarBloc>(context)
+              BlocProvider.of<TabBarBloc>(context)
                   .add(TabChangedEvent(currentIndex));
               //print("Tab $currentIndex selected");
             },
@@ -458,6 +461,37 @@ class _LandingPageViewState extends State<LandingPageView>
                               ],
                             ),
                           ),
+                          SizedBox(
+                            height: MediaQuery.sizeOf(context).height * 0.1,
+                          ),
+                          // ElevatedButton.icon(
+                          //   onPressed: () {
+                          //     openUrl(
+                          //         "https://drive.google.com/file/d/1JK7-0N8hh4r6KWLQ3qtGTJgWixpCaWQ_/view?usp=sharing");
+                          //   },
+                          //   style: ElevatedButton.styleFrom(
+                          //     backgroundColor: Color(0xff031420),
+                          //     shape: RoundedRectangleBorder(
+                          //       borderRadius: BorderRadius.circular(30.0),
+                          //       side: BorderSide(
+                          //         color: Color(0xff4D5BCE),
+                          //         width: 1.0,
+                          //       ),
+                          //     ),
+                          //   ),
+                          //   icon: Icon(
+                          //     Icons.file_download_rounded,
+                          //     color: Color(0xffE99287),
+                          //   ),
+                          //   label: Text(
+                          //     "Download Resume",
+                          //     style: GoogleFonts.firaCode(
+                          //       color: Color(0xffE99287),
+                          //       fontSize: 16,
+                          //     ),
+                          //   ),
+                          // ),
+                          ResumeButton(),
                         ],
                       ),
                     ),
@@ -562,6 +596,19 @@ class _LandingPageViewState extends State<LandingPageView>
       throw "Could not launch $url";
     }
     // }
+  }
+
+  void openUrl(String urlString) async {
+    final String url = urlString;
+    // "https://github.com/NiteshWarik23";
+    // if (kIsWeb) {
+    //   html.window.open(url, "_blank"); // Opens in a new tab for Flutter Web
+    // } else {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+    } else {
+      throw "Could not launch $url";
+    }
   }
 }
 
@@ -792,3 +839,5 @@ class RipplePainter extends CustomPainter {
   bool shouldRepaint(RipplePainter oldDelegate) =>
       oldDelegate.progress != progress;
 }
+
+
