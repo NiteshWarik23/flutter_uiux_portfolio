@@ -51,9 +51,12 @@ class _ProjectsSidebarSectionState extends State<ProjectsSidebarSection> {
               fit: BoxFit.contain,
             ),
             const SizedBox(width: 8),
-            Text(
-              widget.title,
-              style: GoogleFonts.firaCode(color: Colors.white, fontSize: 14),
+            Expanded(
+              child: Text(
+                widget.title,
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.firaCode(color: Colors.white, fontSize: 14),
+              ),
             ),
           ],
         ),
@@ -74,11 +77,15 @@ class _ProjectsSidebarSectionState extends State<ProjectsSidebarSection> {
                 width: 22,
                 fit: BoxFit.contain,
               ),
-              Text(
-                item,
-                style: GoogleFonts.firaCode(
-                  color: const Color(0xff607B96),
-                  fontSize: 14,
+              Expanded(
+                child: Text(
+                  item,
+                  semanticsLabel: item,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.firaCode(
+                    color: const Color(0xff607B96),
+                    fontSize: 14,
+                  ),
                 ),
               ),
             ],

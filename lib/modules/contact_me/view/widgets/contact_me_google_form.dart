@@ -10,6 +10,8 @@ class GoogleFormEmbed extends StatelessWidget {
   final String formUrl =
       'https://docs.google.com/forms/d/e/1FAIpQLSdn7v4YMj9GNn86EtQUL5gLFetxhwDBZxgVlHuSum5oEI-opA/viewform?embedded=true';
 
+  const GoogleFormEmbed({super.key});
+
   @override
   Widget build(BuildContext context) {
     // Register view factory
