@@ -5,11 +5,11 @@ import 'package:my_portfolio/landing_page.dart';
 import 'package:my_portfolio/core/dependency_injection/dependency_injection.dart'
     as di;
 import 'package:my_portfolio/mobile_view.dart';
+import 'package:my_portfolio/mobile_view_option1.dart';
 import 'package:my_portfolio/modules/about_me/presentation/bloc/tabbar_bloc/tab_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
   di.init();
   runApp(const MyApp());
 }
@@ -46,7 +46,8 @@ class MyApp extends StatelessWidget {
       home: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth < 600) {
-            return const MobileView();
+            return const MobileViewOption1();
+            //MobileView();
           } else if (constraints.maxWidth < 1200) {
             return const MobileView(); // Replace with your tablet view widget
           } else {
@@ -54,14 +55,10 @@ class MyApp extends StatelessWidget {
             return BlocProvider(
               create: (context) => tabBarBloc,
               child: LandingPage(),
-            ); // Replace with your web view widget
+            ); // Replace with your web view widget what are the top 5 ways that i can ask questions to you like the top 1 percent
           }
         },
       ),
-      //child: LandingPage())
-      //SnakeGameScreen()
-      //TabBarOnFlutterWeb(),
-      //const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }

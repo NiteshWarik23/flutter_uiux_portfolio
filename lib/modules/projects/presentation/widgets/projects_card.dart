@@ -25,6 +25,7 @@ class ProjectsCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Project Name
               Padding(
                 padding: const EdgeInsets.only(
                   left: 10.0,
@@ -50,20 +51,24 @@ class ProjectsCard extends StatelessWidget {
                   ),
                 ),
                 height: MediaQuery.sizeOf(context).height * 0.35,
-                width: MediaQuery.sizeOf(context).width * 0.4,
+                width: MediaQuery.sizeOf(context).width * 0.3,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //Image
-                    Image.asset(
-                      projectImagePath,
-                      fit: BoxFit.fitWidth,
-                      filterQuality: FilterQuality.high,
-                      //height: MediaQuery.sizeOf(context).height * 0.3,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5.0),
+                      child: SizedBox(
+                        height: MediaQuery.sizeOf(context).height * 0.16,
+                        width: double.infinity,
+                        child: Image.asset(
+                          projectImagePath,
+                          fit: BoxFit.fitWidth,
+                          filterQuality: FilterQuality.high,
+                        ),
+                      ),
                     ),
-                    //Divider
-                    //Divider(),
-                    //Project Description
+                    //Project Description i also want logos in marquee in flutter web
                     Padding(
                       padding: const EdgeInsets.only(
                         left: 8.0,
@@ -80,20 +85,37 @@ class ProjectsCard extends StatelessWidget {
                     //View Project Button with Tech Stack Logo
                     Spacer(),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0,left: 10.0),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xff1C2B3A),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
+                      padding: const EdgeInsets.only(
+                          bottom: 8.0, left: 10.0, right: 10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xff1C2B3A),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                            ),
+                            onPressed: onViewProject,
+                            child: Text(
+                              'View Project',
+                              style: GoogleFonts.firaCode(
+                                  color: Colors.white, fontSize: 14),
+                            ),
                           ),
-                        ),
-                        onPressed: onViewProject,
-                        child: Text(
-                          'View Project',
-                          style: GoogleFonts.firaCode(
-                              color: Colors.white, fontSize: 14),
-                        ),
+                          Container(
+                            width: 35,
+                            height: 35,
+                            decoration: BoxDecoration(
+                              color: Color(0xffA0BDE1),
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: SvgPicture.asset(
+                              'assets/icons/FlutterDarkLogo.svg',
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -102,21 +124,21 @@ class ProjectsCard extends StatelessWidget {
             ],
           ),
         ),
-        Positioned(
-          top: 60,
-          right: 30,
-          child: Container(
-            width: 35,
-            height: 35,
-            decoration: BoxDecoration(
-              color: Color(0xffA0BDE1),
-              borderRadius: BorderRadius.circular(6),
-            ),
-            child: SvgPicture.asset(
-              'assets/icons/FlutterDarkLogo.svg',
-            ),
-          ),
-        ),
+        // Positioned(
+        //   top: 60,
+        //   right: 30,
+        //   child: Container(
+        //     width: 35,
+        //     height: 35,
+        //     decoration: BoxDecoration(
+        //       color: Color(0xffA0BDE1),
+        //       borderRadius: BorderRadius.circular(6),
+        //     ),
+        //     child: SvgPicture.asset(
+        //       'assets/icons/FlutterDarkLogo.svg',
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

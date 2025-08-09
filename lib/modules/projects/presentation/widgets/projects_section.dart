@@ -175,24 +175,35 @@ class ProjectsAreaWidget extends StatelessWidget {
           )
         : LayoutBuilder(
             builder: (context, constraints) {
-              int crossAxisCount = constraints.maxWidth > 1130 ? 3 : 1;
-              print('Maxwidth ${constraints.maxWidth}');
-              return
-                  // ListView(
-                  //   scrollDirection: Axis.horizontal,
-                  //   padding: const EdgeInsets.all(16),
-                  //   children: widgets,
-                  // );
-                  GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: crossAxisCount,
-                        crossAxisSpacing: 16,
-                        mainAxisSpacing: 40,
-                        childAspectRatio: 1.2,
-                      ),
-                      itemCount: widgets.length,
-                      itemBuilder: (context, index) => widgets[index]
-                      );
+              if (constraints.maxWidth <= 1130) {
+                // Mobile view: use ListView
+                return ListView.builder(
+                  padding: const EdgeInsets.all(16),
+                  itemCount: widgets.length,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.only(bottom: 24),
+                    child: widgets[index],
+                  ),
+                );
+              } else {
+                int crossAxisCount = constraints.maxWidth > 1130 ? 3 : 2;
+                print('Maxwidth ${constraints.maxWidth}');
+                return
+                    // ListView( can i use listview here when constraints are of mobile view
+                    //   scrollDirection: Axis.horizontal,
+                    //   padding: const EdgeInsets.all(16),
+                    //   children: widgets,
+                    // );
+                    GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: crossAxisCount,
+                          crossAxisSpacing: 16,
+                          mainAxisSpacing: 40,
+                          childAspectRatio: 1.2,
+                        ),
+                        itemCount: widgets.length,
+                        itemBuilder: (context, index) => widgets[index]);
+              }
             },
           );
   }

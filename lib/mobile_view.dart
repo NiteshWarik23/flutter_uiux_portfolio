@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/landing_page.dart';
 import 'package:my_portfolio/widgets/download_resume_button.dart';
+import 'package:my_portfolio/widgets/marquee_wrapper.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:html' as html;
 
@@ -177,10 +178,10 @@ class MobileView extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top:15.0),
+                padding: const EdgeInsets.only(top: 15.0),
                 child: ResumeButton(),
               ),
-              //RippleEffect(),
+              //RippleEffect(),  flutter_bloc
               SizedBox(
                 height: 500,
                 child: GradientCircleEffect(),
@@ -188,6 +189,26 @@ class MobileView extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.1,
               ),
+              ModernMarquee(
+                items: [
+                  '🚀 Flutter Developer',
+                  '🔥 Firebase Enthusiast',
+                  '💼 Portfolio by Nitesh',
+                ],
+              ),
+              ModernMarquee(
+                isImage: true,
+                height: 60,
+                items: [
+                  'https://img.icons8.com/color/48/flutter.png',
+                  'https://img.icons8.com/color/48/firebase.png',
+                  'https://img.icons8.com/color/48/dart.png',
+                  'https://img.icons8.com/color/48/figma.png',
+                  'https://img.icons8.com/?size=100&id=4VVL78edhbW9&format=png&color=000000'
+                ],
+              )
+
+
             ],
           ),
         ),
@@ -331,7 +352,8 @@ class MobileView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0),
                   child: SizedBox(
-                    width: 300, //MediaQuery.sizeOf(context).width * 0.18, how to create a download resume button with functionality in flutter web or redirect it to drive link
+                    width:
+                        300, //MediaQuery.sizeOf(context).width * 0.18, how to create a download resume button with functionality in flutter web or redirect it to drive link
                     child: Text(
                       "nitesh_kishor_warik",
                       style: GoogleFonts.firaCode(
@@ -479,3 +501,4 @@ class AboutMeMobileView extends StatelessWidget {
     );
   }
 }
+
